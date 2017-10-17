@@ -16,5 +16,4 @@ RUN wget http://nlp.stanford.edu/software/$CORENLP_ARCHIVE \
 
 WORKDIR $CORENLP_PATH
 
-EXPOSE 9000
-CMD ["java", "-mx4g", "-cp", "*", "edu.stanford.nlp.pipeline.StanfordCoreNLPServer", "9000"]
+CMD java -mx4g -cp '*' edu.stanford.nlp.pipeline.StanfordCoreNLPServer -preload=tokenize,ssplit,pos,depparse,parse -lazy false -port $PORT
